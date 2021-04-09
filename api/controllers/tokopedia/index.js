@@ -44,7 +44,7 @@ exports.searchProduct = async (req, res) => {
 			res.status(200).send({
 				responseCode: 200,
 				responseMessage: "success",
-				data: body[0]["data"],
+				data: body[0]["data"]["ace_search_product_v4"]["data"],
 			});
 		});
 	} catch (error) {
