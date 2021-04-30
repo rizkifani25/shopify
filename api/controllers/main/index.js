@@ -161,6 +161,6 @@ exports.searchProduct = async (req, res) => {
       data: response,
     };
   }
-
+  console.log(finalResponse);
   res.status(200).send(finalResponse);
 };
