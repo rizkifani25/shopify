@@ -111,32 +111,32 @@ convertShopeeToTokpedIDR = (price) => {
 };
 
 lowestToHighest = (arrayProduct) => {
-  // using bubble sort algorithm
+  // sorting algorithm
   for (let i = 0; i < arrayProduct.length; i++) {
-    for (let j = 0; j < (arrayProduct.length - i - 1); j++) {
-      if(arrayProduct[j].numberPrice > arrayProduct[j+1].numberPrice){
-        var temp = arrayProduct[j]
-        arrayProduct[j] = arrayProduct[j+1]
-        arrayProduct[j+1] = temp
+    for (let j = 0; j < arrayProduct.length - i - 1; j++) {
+      if (arrayProduct[j].numberPrice > arrayProduct[j + 1].numberPrice) {
+        var temp = arrayProduct[j];
+        arrayProduct[j] = arrayProduct[j + 1];
+        arrayProduct[j + 1] = temp;
       }
     }
   }
   return arrayProduct;
-}
+};
 
 highestToLowest = (arrayProduct) => {
-  // using bubble sort algorithm
+  // sorting algorithm
   for (let i = 0; i < arrayProduct.length; i++) {
-    for (let j = 0; j < (arrayProduct.length - i - 1); j++) {
-      if(arrayProduct[j].numberPrice < arrayProduct[j+1].numberPrice){
-        var temp = arrayProduct[j]
-        arrayProduct[j] = arrayProduct[j+1]
-        arrayProduct[j+1] = temp
+    for (let j = 0; j < arrayProduct.length - i - 1; j++) {
+      if (arrayProduct[j].numberPrice < arrayProduct[j + 1].numberPrice) {
+        var temp = arrayProduct[j];
+        arrayProduct[j] = arrayProduct[j + 1];
+        arrayProduct[j + 1] = temp;
       }
     }
   }
   return arrayProduct;
-}
+};
 
 exports.searchProduct = async (req, res) => {
   const { query, limit, fromLow } = req.body;
@@ -174,7 +174,7 @@ exports.searchProduct = async (req, res) => {
       );
     }
 
-    products = fromLow ? lowestToHighest(products) : highestToLowest(products)
+    products = fromLow ? lowestToHighest(products) : highestToLowest(products);
 
     let response = {
       related: tokpedResponse.related,
