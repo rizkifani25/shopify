@@ -157,12 +157,17 @@ exports.searchProduct = async (req, res) => {
 
     for (let i = 0; i < products.length; i++) {
       products[i].originOlShop = "tokopedia";
+      products[i].shopid = products[i].shop.id
+      products[i].itemid = products[i].id
+      products[i].shop_location = products[i].shop.city
     }
 
     for (let i = 0; i < shopeeResponse.length; i++) {
       shopeeResponse[i].price = convertShopeeToTokpedIDR(
         shopeeResponse[i].price
       );
+      shopeeResponse[i].url = "https://shopee.co.id/"+ shopeeResponse[i].name.replace(RegExp('/\s+|[,\/]/g'), "-") + '-i.' + shopeeResponse[i].shopid + "." + shopeeResponse[i].itemid
+      shopeeResponse[i].id = shopeeResponse[i].itemid;
       shopeeResponse[i].originOlShop = "shopee";
       shopeeResponse[i].imageUrl = products[i].imageUrl;
       products.push(shopeeResponse[i]);
